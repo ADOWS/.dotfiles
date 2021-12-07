@@ -1,15 +1,16 @@
-set guifont=DroidSansMono\ Nerd\ Font\ 11
 set encoding=utf8
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 set shell=zsh
 set clipboard+=unnamedplus
 set smartindent
 set number
-set autochdir
 set relativenumber
-call plug#begin("~/local/share/nvim/plugged")
+
+"Plugins
+call plug#begin('~/.vim/plugged')
 " Plugin Section
 	Plug 'dracula/vim'
-	Plug 'preservim/nerdtree'
+	Plug 'scrooloose/nerdtree'
 	Plug 'ryanoasis/vim-devicons'	
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
@@ -33,7 +34,6 @@ call plug#begin("~/local/share/nvim/plugged")
 	Plug 'tpope/vim-fugitive'
 	Plug 'digitaltoad/vim-pug'
 call plug#end()
-
 "Coc
 	let g:coc_global_extensions = ['coc-snippets', 'coc-pairs', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 "Git Gutter
@@ -49,9 +49,10 @@ call plug#end()
 		set termguicolors
 	endif
 	syntax enable
-	colorscheme dracula
-	let NERDTreeChDirMode=2
-	nnoremap <leader>n :NERDTree .<CR>
+	
+	colorscheme molokai
+	highlight LineNr ctermfg=white
+
 	let g:NERDTreeShowHidden = 1
 	let g:NERDTreeMinimalUI = 1
 	let g:NERDTreeIgnore = []
