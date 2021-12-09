@@ -50,7 +50,7 @@ call plug#end()
 	endif
 	syntax enable
 	
-	colorscheme molokai
+	colorscheme onedark
 	highlight LineNr ctermfg=white
 
 	let g:NERDTreeShowHidden = 1
