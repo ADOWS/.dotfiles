@@ -15,7 +15,7 @@
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
---https://awesomewm.org/doc/api/documentation/05-awesomerc.md.html
+-- https://awesomewm.org/doc/api/documentation/05-awesomerc.md.html
 -- Standard awesome library
 local gears         = require("gears") --Utilities such as color parsing and objects
 local awful         = require("awful") --Everything related to window managment
@@ -69,7 +69,14 @@ do
 end
 -- }}}
 
+--lock screen
+awful.key(
+	{"Mod1", "Control"},
+	"1",
+	function ()
+		awful.util.spawn("gnome-screensaver-command --lock")
 
+	end)
 
 -- {{{ Autostart windowless processes
 local function run_once(cmd_arr)
@@ -116,20 +123,17 @@ local modkey1      = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser1          = "vivaldi-stable"
-local browser2          = "firefox"
-local browser3          = "chromium -no-default-browser-check"
-local editor            = os.getenv("EDITOR") or "nano"
+local browser           = "firefox"
+local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "atom"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "urxvt"
 local virtualmachine    = "virtualbox"
-
 -- awesome variables
 awful.util.terminal = terminal
-awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒" }
+awful.util.tagnames = {  "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 --awful.util.tagnames = { "⠐", "⠡", "⠲", "⠵", "⠻", "⠿" }
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { "www", "edit", "gimp", "inkscape", "music" }
@@ -305,24 +309,21 @@ root.buttons(my_table.join(
 globalkeys = my_table.join(
 
     -- {{{ Personal keybindings
-    awful.key({ modkey }, "w", function () awful.util.spawn( browser1 ) end,
-        {description = browser1, group = "function keys"}),
-    -- dmenu
-    awful.key({ modkey, "Shift"   }, "d",
-    function ()
-        awful.spawn(string.format("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn NotoMonoRegular:bold:pixelsize=14",
-        beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-	end,
-    {description = "show dmenu", group = "hotkeys"}),
-
+    awful.key({ modkey , "Shift" }, "a", function () awful.util.spawn( browser ) end,
+        {description = browser, group = "function keys"}),
+    -- Prompt
+    awful.key({ modkey , "Shift" }, "d", function () awful.spawn("rofi -show drun") end,
+    {description = "run rofi", group = "launcher"}),
+    awful.key({modkey}, "d", function () awful.spawn("rofi -show drun") end,
+    {description = "run rofi", group = "launcher"}),
     -- Function keys
     awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
         {description = "dropdown terminal" , group = "function keys"}),
 
 
     -- super + ... function keys
-    awful.key({ modkey }, "F1", function () awful.util.spawn( browser1 ) end,
-        {description = browser1, group = "function keys"}),
+    awful.key({ modkey }, "a", function () awful.util.spawn( browser ) end,
+        {description = browser, group = "function keys"}),
     awful.key({ modkey }, "F2", function () awful.util.spawn( editorgui ) end,
         {description = editorgui , group = "function keys" }),
     awful.key({ modkey }, "F3", function () awful.util.spawn( "inkscape" ) end,
