@@ -5,6 +5,7 @@ set clipboard+=unnamedplus
 set smartindent
 set number
 set relativenumber
+set mouse-=a
 
 "Plugins
 call plug#begin('~/.vim/plugged')
@@ -20,9 +21,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'epilande/vim-es2015-snippets'
 	Plug 'epilande/vim-react-snippets'
 	Plug 'SirVer/ultisnips'
-	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 	Plug 'tpope/vim-commentary'
 	Plug 'alvan/vim-closetag'
 	Plug 'astrand/xclip'
@@ -50,7 +49,7 @@ call plug#end()
 	endif
 	syntax enable
 	
-	colorscheme onedark
+	colorscheme ayu
 	highlight LineNr ctermfg=white
 
 	let g:NERDTreeShowHidden = 1

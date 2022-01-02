@@ -233,6 +233,8 @@ beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv
 
 
 -- {{{ Menu
+lockscreen = function() awful.util.spawn("slock") end
+
 local myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end },
     { "arandr", "arandr" },
@@ -250,7 +252,8 @@ awful.util.mymainmenu = freedesktop.menu.build({
         { "Sleep", "systemctl suspend" },
         { "Restart", "systemctl reboot" },
         { "Shutdown", "systemctl poweroff" },
-        -- other triads can be put here
+	{ "Lock", lockscreen },
+	-- other triads can be put here
     }
 })
 -- hide menu when mouse leaves it
