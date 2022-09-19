@@ -1,1 +1,1 @@
-My linux dotfile :)
+My linux dotfiles :)
