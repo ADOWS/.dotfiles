@@ -85,9 +85,10 @@ local editor            = os.getenv("EDITOR") or "nvim"
 local filemanager       = "nemo"
 local terminal          = "alacritty"
 local scrlocker    	= "xautolock -locknow"
+
 -- awesome variables
 awful.util.terminal = terminal
-awful.util.tagnames = {  "1", "2", "3", "4", "5"  }
+awful.util.tagnames = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 awful.layout.suit.tile.left.mirror = true
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -693,7 +694,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Auto Start App 
---awful.spawn.with_shell("picom")
+awful.spawn.with_shell("xautolock -detectsleep -time 20 -locker 'i3lock -c 20293f'")
 awful.spawn.with_shell("picom --blur-background-fixed")
-awful.spawn.with_shell("wg-quick up wg0")
-awful.spawn.with_shell("xautolock -detectsleep -time 30 -locker 'i3lock -c 20293f'")
+awful.spawn.with_shell("nohup easyeffects --gapplication-service")

@@ -76,7 +76,7 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 theme.titlebar_minimize_button_focus            = theme.dir .. "/icons/titlebar/minimize_focus.png"
 theme.titlebar_minimize_button_normal           = theme.dir .. "/icons/titlebar/minimize_normal.png"
 
-awful.util.tagnames   = { "1", "2", "3", "4", "5" }
+awful.util.tagnames   = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 
 local markup     = lain.util.markup
 local separators = lain.util.separators
@@ -206,6 +206,14 @@ theme.weather = lain.widget.weather({
     end
 })
 
+-- Net checker
+local net = lain.widget.net({
+    settings = function()
+        if net_now.state == "up" then net_state = "On"
+        else net_state = "Off" end
+        widget:set_markup(markup.font(theme.font, markup(gray, " Net ") .. net_state .. " "))
+    end
+})
 -- Separators
 local first     = wibox.widget.textbox('<span font="Terminus 4"> </span>')
 local arrl_pre  = separators.arrow_right("alpha", "#1A1A1A")
@@ -282,12 +290,12 @@ function theme.at_screen_connect(s)
             first,
 	    theme.weather.icon,
 	    theme.weather.widget,
-            theme.mpd.widget,
 	    theme.volume.widget,
 	    net_speed_widget(),
 	    mem.widget,
 	    cpu.widget,
-            mytextclock,
+            net.widget,
+	    mytextclock,
         },
     }
 end
