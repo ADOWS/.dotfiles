@@ -694,6 +694,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Auto Start App 
-awful.spawn.with_shell("xautolock -detectsleep -time 20 -locker 'i3lock -c 20293f'")
-awful.spawn.with_shell("picom --blur-background-fixed")
 awful.spawn.with_shell("nohup easyeffects --gapplication-service")
+awful.spawn.with_shell("xautolock -detectsleep -time 20 -locker 'i3lock -c 20293f'")
+awful.spawn.with_shell("picom --no-fading-openclose --blur-background-fixed")
